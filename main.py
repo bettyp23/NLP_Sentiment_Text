@@ -1,13 +1,19 @@
+import os
+from dotenv import load_dotenv
 import feedparser
 import requests
 from transformers import pipeline   #performing sentiment analysis on text
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Initialize sentiment analysis pipeline
 pipe = pipeline('sentiment-analysis')
 
-api_key = 'cuj2oo9r01qm7p9n68lgcuj2oo9r01qm7p9n68m0'
-ticker = 'META'
-keyword = 'meta'
+# Get the API key and other variables from environment variables
+api_key = os.getenv('API_KEY')
+ticker = os.getenv('TICKER')
+keyword = os.getenv('KEYWORD')
 
 # Get stock data for Meta Platforms (META) from Finnhub API
 # Formulate the API URL to fetch real-time stock data
